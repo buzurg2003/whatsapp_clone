@@ -3,6 +3,7 @@ import 'package:whatsapp_clone/tab_pages/calls.dart';
 import 'package:whatsapp_clone/tab_pages/chats.dart';
 import 'package:whatsapp_clone/tab_pages/community.dart';
 import 'package:whatsapp_clone/tab_pages/updates.dart';
+import 'package:whatsapp_clone/theme/app_colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,8 +20,11 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text('WhatsApp'),
-          backgroundColor: Color.fromRGBO(32, 45, 53, 1),
+          backgroundColor: AppColors.backgroundColor,
+          foregroundColor: AppColors.white,
           bottom: TabBar(
+            unselectedLabelColor: AppColors.white,
+
             tabs: [
               Tab(icon: Icon(Icons.people)),
               Tab(text: 'Chats'),

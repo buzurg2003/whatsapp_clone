@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/theme/app_colors.dart';
 
 class CommunityPage extends StatefulWidget {
   const CommunityPage({super.key});
@@ -16,8 +17,8 @@ class _CommunityPageState extends State<CommunityPage> {
           
         },
         style: FilledButton.styleFrom(
-          foregroundColor: Colors.black,
-          backgroundColor: Colors.green[700],
+          foregroundColor: AppColors.black,
+          backgroundColor: AppColors.activeColor,
         ), 
         child: Padding(
           padding: EdgeInsets.symmetric(

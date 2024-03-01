@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:whatsapp_clone/theme/app_colors.dart';
 
 class UpdatesPage extends StatefulWidget {
   const UpdatesPage({super.key});
@@ -17,8 +17,10 @@ class _UpdatesPageState extends State<UpdatesPage> {
           padding:  EdgeInsets.only(
             top: 20,
             left: 10,
+            right: 10,
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'Status',
@@ -39,8 +41,10 @@ class _UpdatesPageState extends State<UpdatesPage> {
           padding: EdgeInsets.only(
             top: 20,
             left: 10,
+            right: 10,
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'Channels',
@@ -79,14 +83,12 @@ class _ChannelItemWidget extends StatelessWidget {
     return Container(
       height: 150,
       width: 120,
-      // decoration: BoxDecoration(
-      //   borderRadius: BorderRadius.circular(1),
-      // ),
-      color: Colors.purple[900],
+      color: AppColors.backgroundColor,
       child: Column(
         children: [
           Icon(
             Icons.group,
+            color: AppColors.white,
             size: 70,
           ),
           Text('Group name'),
