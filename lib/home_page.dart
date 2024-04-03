@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  bool _isSearchVisible = false;
 
   @override
   void initState() {
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('WhatsApp'),
+        title: _isSearchVisible ? _buildSearchField() : Text('WhatsApp'),
         backgroundColor: AppColors.backgroundColor,
         foregroundColor: AppColors.white,
         bottom: TabBar(
@@ -53,20 +54,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           ],
           controller: _tabController,
         ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-            child: Icon(Icons.camera_alt_outlined),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-            child: Icon(Icons.search),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-            child: Icon(Icons.more_vert),
-          ),
-        ],
+        actions: _buildActions(),
       ),
       body: TabBarView(
         controller: _tabController,
@@ -83,6 +71,92 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         },
         child: _buildFabIcon(),
       ),
+    );
+  }
+
+  List<Widget> _buildActions() {
+    if (_isSearchVisible) {
+      return [
+        IconButton(
+          onPressed: () {
+            setState(() {
+              _isSearchVisible = false;
+            });
+          },
+          icon: Icon(Icons.close),
+        ),
+      ];
+    } else {
+      return [
+        IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CameraPageWidget(),
+              ),
+            );
+          },
+          icon: Icon(Icons.camera_alt_outlined),
+        ),
+        IconButton(
+          onPressed: () {
+            setState(() {
+              _isSearchVisible = true;
+            });
+          },
+          icon: Icon(Icons.search),
+        ),
+        PopupMenuButton<int>(
+          color: AppColors.backgroundColor,
+          itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
+            PopupMenuItem<int>(
+              child: Text('New group'),
+              value: 1,
+            ),
+            PopupMenuItem<int>(
+              child: Text('New broadcast'),
+              value: 2,
+            ),
+            PopupMenuItem<int>(
+              child: Text('Linked devices'),
+              value: 3,
+            ),
+            PopupMenuItem<int>(
+              child: Text('Starred messages'),
+              value: 3,
+            ),
+            PopupMenuItem<int>(
+              child: Text('Settings'),
+              value: 3,
+            ),
+            // Add more items as needed
+          ],
+          onSelected: (int value) {
+            // Handle selection of menu item
+            switch (value) {
+              case 1:
+              // Do something for item 1
+                break;
+              case 2:
+              // Do something for item 2
+                break;
+            // Handle other items as needed
+            }
+          },
+        ),
+      ];
+    }
+  }
+
+  Widget _buildSearchField() {
+    return TextField(
+      decoration: InputDecoration(
+        hintText: 'Search...',
+        border: InputBorder.none,
+        hintStyle: TextStyle(color: Colors.white),
+      ),
+      style: TextStyle(color: Colors.white),
     );
   }
 

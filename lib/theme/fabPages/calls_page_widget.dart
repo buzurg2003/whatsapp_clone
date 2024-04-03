@@ -6,11 +6,7 @@ class CallsPageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('New Screen for Index 3'),
         backgroundColor: AppColors.backgroundColor,
-      ),
-      body: Center(
-        child: Text('This is a new screen for index 3'),
       ),
     );
   }

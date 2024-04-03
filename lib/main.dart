@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/home_page.dart';
-import 'package:whatsapp_clone/theme/app_colors.dart';
 import 'package:whatsapp_clone/theme/theme.dart';
 
 void main() {
